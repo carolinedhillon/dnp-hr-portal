@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { ShellComponent } from "./shell/shell.component";
 import { PageNotFoundComponent } from './shell/page-not-found/page-not-found.component';
+import { CallbackComponent } from './auth/callback/callback.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
     loadChildren: () =>
       import("./public/public.module").then(m => m.PublicModule)
   },
+  {path:'auth/callback', component: CallbackComponent},
   {path: 'page-not-found',  component: PageNotFoundComponent },
   { path: '**',  redirectTo: '/page-not-found'},
 
