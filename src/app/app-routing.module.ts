@@ -3,11 +3,13 @@ import { Routes, RouterModule } from "@angular/router";
 import { ShellComponent } from "./shell/shell.component";
 import { PageNotFoundComponent } from './shell/page-not-found/page-not-found.component';
 import { CallbackComponent } from './auth/callback/callback.component';
+import { MsalGuard } from '@azure/msal-angular';
 
 const routes: Routes = [
   {
     path: "",
     component: ShellComponent,
+    canActivate: [MsalGuard],
     children: [
       {
         path: "procurement",

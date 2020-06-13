@@ -11,6 +11,7 @@ export class GlobalErrorHandlerService implements ErrorHandler {
 
   handleError(error) {
     this.eventBus.fire({action: App.Events.ERROR_HANDLER_EXCEPTION, payload: error});
+    console.error(error);
     return throwError(error);
   }
 

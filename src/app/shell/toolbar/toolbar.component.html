@@ -8,14 +8,26 @@
     <mat-form-field class="search">
       <mat-label>Search</mat-label>
       <input type="text" matInput placeholder="Search" />
-      <button mat-icon-button matSuffix><mat-icon >search</mat-icon></button>
+      <button mat-icon-button matSuffix><mat-icon>search</mat-icon></button>
     </mat-form-field>
 
-    <button mat-icon-button class="errors" *ngIf='errors.length'>
-        <mat-icon [matBadge]="errors.length" matBadgeColor="warn" color='error'>warning</mat-icon></button>
-
-    <button mat-icon-button>
-        <mat-icon>power_settings_new</mat-icon>
+    <button mat-icon-button class="errors" *ngIf="errors.length">
+      <mat-icon [matBadge]="errors.length" matBadgeColor="warn" color="error"
+        >warning</mat-icon
+      >
     </button>
+
+    <div *ngIf="profile$ | async as profile">{{ profile }}</div>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>power_settings_new</mat-icon>
+        Logout
+      </button>
+
+
+    </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>

@@ -8,7 +8,8 @@ export namespace Auth {
         auth: {
           clientId: 'b67ad60b-5840-4c3f-9b29-802dbd137186', // This is your client ID
           authority: 'https://login.microsoftonline.com/17fcba7b-59c9-43a8-b91e-62d17ea2e5d9', // This is your tenant ID
-          redirectUri: 'http://localhost:4200/auth/callback'// This is your redirect URI
+          redirectUri: 'http://localhost:4200/auth/callback',// This is your redirect URI
+          postLogoutRedirectUri: 'http://localhost:4200/public/index'
         },
         cache: {
           cacheLocation: 'localStorage',

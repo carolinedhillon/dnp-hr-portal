@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe(console.log);
-    this.getProfile();
+    // this.getProfile();
   }
 
  
