@@ -1,0 +1,21 @@
+<mat-toolbar color="primary" class="mat-elevation-z2">
+  <mat-toolbar-row class="mat-elevation-z2">
+    <button mat-icon-button class="action" (click)="toggleMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>D&P Procurment</span>
+    <span class="spacer"></span>
+    <mat-form-field class="search">
+      <mat-label>Search</mat-label>
+      <input type="text" matInput placeholder="Search" />
+      <button mat-icon-button matSuffix><mat-icon >search</mat-icon></button>
+    </mat-form-field>
+
+    <button mat-icon-button class="errors" *ngIf='errors.length'>
+        <mat-icon [matBadge]="errors.length" matBadgeColor="warn" color='error'>warning</mat-icon></button>
+
+    <button mat-icon-button>
+        <mat-icon>power_settings_new</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>

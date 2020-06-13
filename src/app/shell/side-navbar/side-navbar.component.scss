@@ -1,0 +1,45 @@
+#container {
+  top: 64px !important;
+}
+
+.navItem {
+    display: block;
+    padding: 0.5rem;
+    align-items: center;
+    font-size: 0.8rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.5s ease;
+    transition: color 0.5s ease;
+}
+
+.navItem:hover {
+  background: aliceblue;
+  color: #4284f4;
+}
+
+.navItem.active {
+    border-right: 0.2rem solid #4284f4;
+  }
+
+.navItem:hover .mat-icon{
+    color: #4284f4;
+  }
+
+.navItem .mat-icon {
+
+  font-size: 2rem;
+  height: 2rem;
+  width: 2rem;
+}
+
+
+.content{
+    padding: 1rem;
+    
+}
+
+a{
+    text-decoration: none;
+    color: #333;
+}
