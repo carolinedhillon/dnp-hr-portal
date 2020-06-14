@@ -12,16 +12,18 @@
     </mat-form-field>
 
     <button mat-icon-button class="errors" *ngIf="errors.length">
-      <mat-icon [matBadge]="errors.length" matBadgeColor="warn" color="error"
-        >warning</mat-icon
-      >
+      <mat-icon [matBadge]="errors.length" matBadgeColor="warn" color="error">warning</mat-icon>
     </button>
 
-    <div *ngIf="profile$ | async as profile">{{ profile }}</div>
+    
+    <div *ngIf="image$ | async as image"> <img class="user-image" [src]='image'></div>
+
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
+    
     <mat-menu #menu="matMenu">
+      <!-- <div mat-menu-item *ngIf="profile$ | async as profile">{{ profile['displayName'] }}</div> -->
       <button mat-menu-item (click)="logout()">
         <mat-icon>power_settings_new</mat-icon>
         Logout
