@@ -5,7 +5,7 @@ import { SharepointService } from './sharepoint/sharepoint.service';
 import { environment } from 'src/environments/environment';
 import { take, filter, tap, mergeMap } from 'rxjs/operators';
 import { from } from 'rxjs';
-import { Base } from './services/Base';
+import { Base } from './services/base';
 import { SubSink } from 'subsink';
 @Component({
   selector: "app-root",

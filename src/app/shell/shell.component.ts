@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone, Renderer, ViewChild, ElementRef } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, RouterEvent } from '@angular/router';
-import { Base } from '../services/Base';
+import { Base } from '../services/base';
 import { SubSink } from 'subsink';
 
 @Component({

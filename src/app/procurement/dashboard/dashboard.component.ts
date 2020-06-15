@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Base } from 'src/app/services/Base';
+import { Base } from 'src/app/services/base';
 import { SubSink } from 'subsink';
 
 @Component({
