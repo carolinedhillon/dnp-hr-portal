@@ -1,40 +1,43 @@
-import { Component } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { MsalService, BroadcastService } from "@azure/msal-angular";
 import { Auth } from "./auth/auth-config";
 import { SharepointService } from './sharepoint/sharepoint.service';
 import { environment } from 'src/environments/environment';
-import { take } from 'rxjs/operators';
+import { take, filter, tap, mergeMap } from 'rxjs/operators';
+import { from } from 'rxjs';
+import { Base } from './services/Base';
+import { SubSink } from 'subsink';
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
 })
-export class AppComponent {
+export class AppComponent extends Base implements OnInit, OnDestroy{
+  
+
   constructor(private authService: MsalService, 
     private broadcastService: BroadcastService,
     private sharePoint: SharepointService) {
-
-      this.broadcastService.subscribe("msal:acquireTokenSuccess", payload=>this.postLogin(payload));
-    }
-    called = false;
-    postLogin(payload){
-      console.log('post login', {payload});
-      if(!this.called){
-      this.sharePoint.setup(environment.sharepoint.site, payload.accessToken).subscribe(obj=>{
-        this.sharePoint.ping().subscribe(console.log);
+      super();
+      this.sub = new SubSink();
+      this.sub.sink = this.broadcastService.getMSALItem()
+      .pipe(
+        filter(obj=>obj.type === "msal:acquireTokenSuccess"),
+        take(1),
+        mergeMap(this.postLogin.bind(this))
+      ).subscribe(obj=>{
+        this.sub.sink = this.sharePoint.ping().subscribe(console.log);
       });
-      
-      }
-      this.called = true;
+    }
+
+    ngOnInit(){}
+
+    ngOnDestroy(){}
+
+    postLogin(payload){
+     return from(this.authService.acquireTokenSilent({scopes:[`${environment.sharepoint.site}/AllSites.FullControl`]}))
+      .pipe(tap(token=>this.sharePoint.setup(environment.sharepoint.site, token.accessToken)));
     }
   
 
-  // login() {
-  //   const scopes = { extraScopesToConsent: ["user.read", "openid", "profile"] };
-  //   // let sharePointSetup$ = this.sharePoint.setup(environment.sharepoint.baseSite, payload.tokens['sharepoint']);
-  //   if (Auth.isIE)
-  //     this.authService.loginRedirect(scopes);
-  //   else
-  //     this.authService.loginPopup(scopes);
-  // }
 }

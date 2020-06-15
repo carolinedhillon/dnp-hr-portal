@@ -247,3 +247,8 @@ $altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
 
 .spacer { flex: 1 1 auto; }
 .mat-form-field { font-size: 0.8rem;}
+
+.loader{ 
+  width: 100%;
+  display: flex;
+  justify-content: center; }

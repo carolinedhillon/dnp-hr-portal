@@ -3,7 +3,7 @@ import { MsalAngularConfiguration } from '@azure/msal-angular';
 
 export namespace Auth {
      export const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
-
+      export const scopes = ["user.read", "openid", "profile","https://dnpassociates.sharepoint.com/AllSites.FullControl"];
      export const config : Configuration = {
         auth: {
           clientId: 'b67ad60b-5840-4c3f-9b29-802dbd137186', // This is your client ID
@@ -18,16 +18,10 @@ export namespace Auth {
       };
     export const options: MsalAngularConfiguration = {
         popUp: !Auth.isIE,
-        consentScopes: [
-          'user.read',
-          'openid',
-          'profile',
-          'https://dnpassociates.sharepoint.com/AllSites.FullControl'
-          
-        ],
+        consentScopes: Auth.scopes,
         unprotectedResources: [],
         protectedResourceMap: [
-            ['https://dnpassociates.sharepoint.com',['AllSites.FullControl']],
+            // ['https://dnpassociates.sharepoint.com',['AllSites.FullControl']],
             ['https://graph.microsoft.com/v1.0/me', ['user.read']]
             
           ],
