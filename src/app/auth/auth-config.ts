@@ -22,10 +22,14 @@ export namespace Auth {
           'user.read',
           'openid',
           'profile',
+          'https://dnpassociates.sharepoint.com/AllSites.FullControl'
+          
         ],
         unprotectedResources: [],
         protectedResourceMap: [
+            ['https://dnpassociates.sharepoint.com',['AllSites.FullControl']],
             ['https://graph.microsoft.com/v1.0/me', ['user.read']]
+            
           ],
         extraQueryParameters: {}
       }

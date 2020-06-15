@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  profile;
+  data;
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit() {
@@ -16,14 +16,12 @@ export class DashboardComponent implements OnInit {
     // this.getProfile();
   }
 
+  sharePointPing(){
+    console.log('sharepoint ping..')
+  }
+
  
 
-getProfile() {
-  console.log('pofile');
- let  graphMeEndpoint = "https://graph.microsoft.com/v1.0/me";
-  this.http.get(graphMeEndpoint).subscribe(profile => {
-      this.profile = profile;
-    });
-}
+
 
 }

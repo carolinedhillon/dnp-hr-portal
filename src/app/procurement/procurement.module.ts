@@ -12,7 +12,8 @@ import { MaterialModule } from '../material/material.module';
   declarations: [DashboardComponent, InvoiceChannelComponent, InvoiceTrackingComponent],
   imports: [
     CommonModule,
-    ProcurementRoutingModule
+    ProcurementRoutingModule,
+    MaterialModule
   ]
 })
 export class ProcurementModule { }

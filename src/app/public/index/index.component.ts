@@ -17,11 +17,11 @@ export class IndexComponent implements OnInit {
   login() {
     if (Auth.isIE)
       this.authService.loginRedirect({
-        extraScopesToConsent: ["user.read", "openid", "profile"],
+        extraScopesToConsent: ["user.read", "openid", "profile","https://dnpassociates.sharepoint.com/AllSites.FullControl"], 
       });
     else
       this.authService.loginPopup({
-        extraScopesToConsent: ["user.read", "openid", "profile"],
+        extraScopesToConsent: ["user.read", "openid", "profile","https://dnpassociates.sharepoint.com/AllSites.FullControl"],
       }).then(obj=>this.router.navigate(['/procurement']));
   }
 }
