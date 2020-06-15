@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "dnp-proc-portal"
+    }
+  },
+  "defaultProject": "dnp-proc-portal",
+  "cli": {
+    "analytics": false
+  }
 }
