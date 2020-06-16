@@ -15,8 +15,16 @@
       <mat-icon [matBadge]="errors.length" matBadgeColor="warn" color="error">warning</mat-icon>
     </button>
 
+    <!-- <div mat-menu-item *ngIf="profile$ | async as profile">{{ profile['displayName'] }}</div> -->
+    <ng-container *ngIf="profile$ | async as profile">
+        <div *ngIf="image$ | async as image"> 
+          <img *ngIf='image' class="user-image" [src]='image'>
+          <span class="user-image" >{{profile | json }}</span>
+        
+        </div>
+
+    </ng-container>
     
-    <div *ngIf="image$ | async as image"> <img class="user-image" [src]='image'></div>
 
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>

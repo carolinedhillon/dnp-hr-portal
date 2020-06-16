@@ -9,7 +9,7 @@ import { shareReplay } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DashboardResolverService implements Resolve<any>{
-  url = '/dnp-proc/Shared Documents/FL_insurance_sample.csv';
+  url = '/dnp-hr/Shared Documents/CoreHRExtract.csv';
   constructor(private sharePoint: SharepointService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { shareReplay, mergeMap, tap, map } from 'rxjs/operators';
+import { shareReplay, mergeMap, tap, map, catchError } from 'rxjs/operators';
 import { DomSanitizer } from '@angular/platform-browser';
+import { of } from 'rxjs';
 
 
 @Injectable({
@@ -12,7 +13,7 @@ export class UserProfileService {
   
   public profile$;
   public image$;
-  
+  public initials;
   constructor(private http: HttpClient, private _sanitizer: DomSanitizer) { 
 
     this.profile$ = this.http.get(this.url)
@@ -26,6 +27,9 @@ export class UserProfileService {
       map(blob => {
           var urlCreator = window.URL;
           return this._sanitizer.bypassSecurityTrustUrl(urlCreator.createObjectURL(blob));
+      }),
+      catchError(error=>{
+        return of('');
       }));
       
   }

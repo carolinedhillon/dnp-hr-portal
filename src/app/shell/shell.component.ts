@@ -24,7 +24,7 @@ export class ShellComponent extends Base implements OnInit {
   }
 
   manageRoutes(event: RouterEvent){
-    console.log({event});
+    // console.log({event});
     if(event instanceof NavigationStart)
       this.ngZone.runOutsideAngular(() => this.renderer.setStyle(this.spinnerElement.nativeElement, 'opacity', '1'))
 

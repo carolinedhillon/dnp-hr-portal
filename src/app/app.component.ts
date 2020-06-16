@@ -35,6 +35,7 @@ export class AppComponent extends Base implements OnInit, OnDestroy{
     ngOnDestroy(){}
 
     postLogin(payload){
+      console.log({payload});
      return from(this.authService.acquireTokenSilent({scopes:[`${environment.sharepoint.site}/AllSites.FullControl`]}))
       .pipe(tap(token=>this.sharePoint.setup(environment.sharepoint.site, token.accessToken)));
     }
