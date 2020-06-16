@@ -10,3 +10,5 @@ Go to Authentication and add configuration/ redirect URI/ logout URL (give same 
 
 - Change Sharepoint url in dashboard.resolver
 
+Change of url
+
