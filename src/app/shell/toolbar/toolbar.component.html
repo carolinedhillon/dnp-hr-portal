@@ -3,7 +3,7 @@
     <button mat-icon-button class="action" (click)="toggleMenu()">
       <mat-icon>menu</mat-icon>
     </button>
-    <span>D&P Procurment</span>
+    <span>D&P HR PORTAL</span>
     <span class="spacer"></span>
     <mat-form-field class="search">
       <mat-label>Search</mat-label>
@@ -18,8 +18,8 @@
     <!-- <div mat-menu-item *ngIf="profile$ | async as profile">{{ profile['displayName'] }}</div> -->
     <ng-container *ngIf="profile$ | async as profile">
         <div *ngIf="image$ | async as image"> 
-          <img *ngIf='image' class="user-image" [src]='image'>
-          <span class="user-image" >{{profile | json }}</span>
+          <img *ngIf='image  !== "onError"' class="user-image" [src]='image'>
+          <span class="avatar" *ngIf='image === "onError"'>{{profile['displayName'] | avatar }}</span>
         
         </div>
 

@@ -29,7 +29,7 @@ export class UserProfileService {
           return this._sanitizer.bypassSecurityTrustUrl(urlCreator.createObjectURL(blob));
       }),
       catchError(error=>{
-        return of('');
+        return of('onError');
       }));
       
   }

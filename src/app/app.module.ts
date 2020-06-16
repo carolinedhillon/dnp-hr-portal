@@ -14,6 +14,7 @@ import { MsalModule, MsalInterceptor } from "@azure/msal-angular";
 import { Auth } from "./auth/auth-config";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { CallbackComponent } from './auth/callback/callback.component';
+import { AvatarPipe } from './pipes/avatar.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CallbackComponent } from './auth/callback/callback.component';
     SideNavbarComponent,
     PageNotFoundComponent,
     CallbackComponent,
+    AvatarPipe,
   ],
   imports: [
     BrowserModule,
