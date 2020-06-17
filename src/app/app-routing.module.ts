@@ -12,10 +12,10 @@ const routes: Routes = [
     canActivate: [MsalGuard],
     children: [
       {
-        path: "procurement",
+        path: "core-hr",
         loadChildren: () =>
-          import("./procurement/procurement.module").then(
-            m => m.ProcurementModule
+          import("./core-hr/core-hr.module").then(
+            m => m.CoreHRModule
           )}
     ]
   },

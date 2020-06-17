@@ -13,11 +13,11 @@ export class SideNavbarComponent implements OnInit, OnDestroy {
   @ViewChild('drawer',{static:true}) drawer : MatDrawer;
   navItems: Nav.Item[] = [
     {text:'Home', icon:'home', route:'/hr-portal/home'},
-    {text:'Employees', icon:'receipt', route:'/employees'},
-    {text:'Payment Orders', icon:'receipt_long', route:'/payment-orders'},
-    {text:'Suppliers', icon:'scatter_plot', route:'/suppliers'},
-    {text:'Invoice Channels', icon:'reorder', route:'/invoice-channel'},
-    {text:'Recs', icon:'tune', route:'/recs'}
+    {text:'Employees', icon:'person', route:'/employees'},
+    {text:'Teams', icon:'people_alt', route:'/payment-orders'},
+    {text:'Payroll', icon:'monetization_on', route:'/invoice-channel'},
+    {text:'Diversity', icon:'public', route:'/suppliers'},
+    {text:'...', icon:'tune', route:'/recs'}
   ];
 
   subs:Subscription[] = []; 
