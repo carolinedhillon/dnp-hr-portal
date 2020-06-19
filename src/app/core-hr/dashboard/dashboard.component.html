@@ -1,5 +1,39 @@
-<p>dashboard works! But it can work better</p>
-<!-- 
+
+<mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput [(ngModel)]="searchStr" (keyup)='filterTable(searchStr)'>
+  </mat-form-field>
+
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="name.firstName">
+      <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element["name.firstName"]}} </mat-cell>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name.lastName">
+      <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element["name.lastName"]}} </mat-cell>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="address.postCode">
+      <mat-header-cell *matHeaderCellDef> Post Code </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element["address.postCode"]}} </mat-cell>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="address.city">
+      <mat-header-cell *matHeaderCellDef> City </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element["address.city"]}} </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="cols"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: cols;"></mat-row>
+  </mat-table>
+
+  <!-- 
 <button mat-raised-button (click)='sharePointPing()'>Fetch from sharepoint</button>
 
 {{data.length}} -->

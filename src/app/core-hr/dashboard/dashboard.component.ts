@@ -2,6 +2,14 @@ import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { DashboardSupportService } from "./dashboard-support.service";
+import { MatTableDataSource } from '@angular/material/table';
+
+export interface EmployeeDetails {
+  firstName: string;
+  lastName: string;
+  postCode: number;
+  city: string;
+}
 
 @Component({
   selector: "app-dashboard",
@@ -9,7 +17,10 @@ import { DashboardSupportService } from "./dashboard-support.service";
   styleUrls: ["./dashboard.component.scss"]
 })
 export class DashboardComponent implements OnInit {
+  cols = ['name.firstName', 'name.lastName', 'address.postCode', 'address.city'];
   public employees = [];
+   dataSource;
+   searchStr;
 
   constructor(
     private http: HttpClient,
@@ -19,7 +30,19 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.service.getEmployees().subscribe(data => {
       this.employees = data;
+      this.dataSource = this.employees;
       console.log(data);
+
     });
+
   }
+
+  filterTable(searchStr){
+    this.dataSource = this.employees.filter(obj=>{
+      let str = JSON.stringify(obj).toLowerCase();
+      return str.indexOf(searchStr.toLowerCase()) > -1;
+    })
+  }
+  
+
 }
