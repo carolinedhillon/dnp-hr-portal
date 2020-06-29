@@ -1,0 +1,21 @@
+
+<div class="three">
+    <div>
+        <h1>Subject</h1>
+        <h3>Current index: {{index}}</h3>
+        <h3>Current value: {{values[index]}}</h3>
+        <button (click)="fireNext()">Next</button>
+    </div>
+    <div>
+        <h1>Observable 1</h1>
+        <button (click)="fireSubscribe()">Subscribe</button>
+        <h3><div *ngIf="observable1$ | async as item">{{item}}</div></h3>
+        <button (click)="fireUnsubscribe()">Unsubscribe</button>
+    </div>
+    <div>
+            <h1>Observable 2</h1>
+            <button (click)="fireDoSubscribe()">Subscribe</button>
+            <h3>{{observable2Value}}</h3>
+            <button (click)="fireDoUnsubscribe()">Unsubscribe</button>
+        </div>
+</div>

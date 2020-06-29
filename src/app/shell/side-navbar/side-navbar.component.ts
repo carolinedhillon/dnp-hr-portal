@@ -12,8 +12,8 @@ import { Subscription } from 'rxjs';
 export class SideNavbarComponent implements OnInit, OnDestroy {
   @ViewChild('drawer',{static:true}) drawer : MatDrawer;
   navItems: Nav.Item[] = [
-    {text:'Home', icon:'home', route:'/hr-portal/home'},
-    {text:'Employees', icon:'person', route:'/employees'},
+    {text:'Home', icon:'home', route:'core-hr/home'},
+    {text:'Employees', icon:'person', route:'/core-hr/employees'},
     {text:'Teams', icon:'people_alt', route:'/payment-orders'},
     {text:'Payroll', icon:'monetization_on', route:'/invoice-channel'},
     {text:'Diversity', icon:'public', route:'/suppliers'},

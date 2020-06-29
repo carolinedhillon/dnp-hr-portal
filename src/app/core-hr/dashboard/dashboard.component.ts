@@ -19,6 +19,7 @@ export interface EmployeeDetails {
 export class DashboardComponent implements OnInit {
   cols = ['name.firstName', 'name.lastName', 'address.postCode', 'address.city'];
   public employees = [];
+  masterEmployees;
    dataSource;
    searchStr;
 
@@ -29,7 +30,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getEmployees().subscribe(data => {
-      this.employees = data;
+      this.masterEmployees = this.employees = data;
       this.dataSource = this.employees;
       console.log(data);
 
@@ -39,7 +40,12 @@ export class DashboardComponent implements OnInit {
 
   filterTable(searchStr){
     this.dataSource = this.employees.filter(obj=>{
-      let str = JSON.stringify(obj).toLowerCase();
+      // let minObj = {};
+      // this.cols.forEach(col => minObj[col] = obj[col]);
+
+      let minObj = this.cols.reduce((acc,col)=>acc[col]=obj[col],{})
+
+      let str = JSON.stringify(minObj).toLowerCase();
       return str.indexOf(searchStr.toLowerCase()) > -1;
     })
   }
